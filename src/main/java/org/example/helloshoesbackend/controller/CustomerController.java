@@ -3,8 +3,12 @@ package org.example.helloshoesbackend.controller;
 import lombok.RequiredArgsConstructor;
 import org.example.helloshoesbackend.dto.CustomerDTO;
 import org.example.helloshoesbackend.service.CustomerService;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("api/v1/customers")
@@ -26,5 +30,16 @@ public class CustomerController {
     @DeleteMapping(value = "/{id}")
     public void deleteCustomer(@PathVariable ("id") String id){
         customerService.deleteCustomer(id);
+    }
+
+    @GetMapping(produces = "application/json")
+    List<CustomerDTO> getAllCustomers(){
+        return customerService.getAllCustomer();
+    }
+
+    @GetMapping(value = "/{id}",produces = "application/json")
+    ResponseEntity<CustomerDTO> getSelectedCustomer(@PathVariable ("id") String id){
+        CustomerDTO selectedCustomer = customerService.getSelectedCustomer(id);
+        return selectedCustomer != null ? ResponseEntity.ok(selectedCustomer) : ResponseEntity.status(HttpStatus.NOT_FOUND).build();
     }
 }
