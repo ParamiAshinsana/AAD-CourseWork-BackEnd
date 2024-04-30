@@ -30,12 +30,13 @@ public class CustomerServiceIMPL implements CustomerService {
 
     @Override
     public List<CustomerDTO> getAllCustomer() {
-        return null;
+        return customermapping.toCustomerDTOList(customerDAO.findAll());
     }
 
     @Override
     public CustomerDTO getSelectedCustomer(String id) {
-        return null;
+        if(!customerDAO.existsById(id)) throw new NotFoundException("CustomerController not found");
+        return customermapping.toCustomerDTO(customerDAO.getReferenceById(id));
     }
 
     @Override
