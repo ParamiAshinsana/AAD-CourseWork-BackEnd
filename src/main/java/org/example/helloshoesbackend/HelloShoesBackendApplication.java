@@ -9,5 +9,4 @@ public class HelloShoesBackendApplication {
     public static void main(String[] args) {
         SpringApplication.run(HelloShoesBackendApplication.class, args);
     }
-
 }
