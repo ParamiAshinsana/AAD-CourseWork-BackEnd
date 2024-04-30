@@ -10,7 +10,7 @@ import java.util.List;
 
 @Component
 @RequiredArgsConstructor
-public class Mapping {
+public class CustomerMapping {
     private final ModelMapper mapper;
 
     public CustomerDTO toCustomerDTO(CustomerEntity customer) {
