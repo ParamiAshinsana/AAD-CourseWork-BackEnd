@@ -22,4 +22,9 @@ public class CustomerController {
         customerService.updateCustomer(id,customerDTO);
         System.out.println("Customer Updated!");
     }
+
+    @DeleteMapping(value = "/{id}")
+    public void deleteCustomer(@PathVariable ("id") String id){
+        customerService.deleteCustomer(id);
+    }
 }
