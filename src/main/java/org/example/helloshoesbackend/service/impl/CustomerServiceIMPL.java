@@ -3,7 +3,9 @@ package org.example.helloshoesbackend.service.impl;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.example.helloshoesbackend.dto.CustomerDTO;
+import org.example.helloshoesbackend.repository.CustomerDAO;
 import org.example.helloshoesbackend.service.CustomerService;
+import org.example.helloshoesbackend.utill.CustomerMapping;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,6 +14,9 @@ import java.util.List;
 @Transactional
 @RequiredArgsConstructor
 public class CustomerServiceIMPL implements CustomerService {
+    private final CustomerDAO customerDAO;
+    private final CustomerMapping customermapping;
+
     @Override
     public CustomerDTO saveCustomer(CustomerDTO customerDTO) {
         return null;
