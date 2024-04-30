@@ -40,7 +40,8 @@ public class CustomerServiceIMPL implements CustomerService {
 
     @Override
     public void deleteCustomer(String id) {
-
+        if(!customerDAO.existsById(id)) throw new NotFoundException("CustomerController not found");
+        customerDAO.deleteById(id);
     }
 
     @Override
@@ -59,4 +60,6 @@ public class CustomerServiceIMPL implements CustomerService {
         tmpCustomer.get().setCustomerRecDate(customerDTO.getCustomerRecDate());
         tmpCustomer.get().setCustomerRecTime(customerDTO.getCustomerRecTime());
     }
+
+
 }
