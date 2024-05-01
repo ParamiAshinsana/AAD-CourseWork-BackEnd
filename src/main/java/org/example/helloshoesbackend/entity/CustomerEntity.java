@@ -29,6 +29,4 @@ public class CustomerEntity {
 //    private String customerAddress05;
     private String customerContact;
     private String customerEmail;
-    private String customerRecDate;
-    private String customerRecTime;
 }
