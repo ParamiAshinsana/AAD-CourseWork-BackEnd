@@ -23,6 +23,4 @@ public class CustomerDTO implements SuperDTO{
 //    private String customerAddress05;
     private String customerContact;
     private String customerEmail;
-    private String customerRecDate;
-    private String customerRecTime;
 }
