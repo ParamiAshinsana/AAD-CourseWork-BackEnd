@@ -58,8 +58,6 @@ public class CustomerServiceIMPL implements CustomerService {
         tmpCustomer.get().setCustomerAddress(customerDTO.getCustomerAddress());
         tmpCustomer.get().setCustomerContact(customerDTO.getCustomerContact());
         tmpCustomer.get().setCustomerEmail(customerDTO.getCustomerEmail());
-        tmpCustomer.get().setCustomerRecDate(customerDTO.getCustomerRecDate());
-        tmpCustomer.get().setCustomerRecTime(customerDTO.getCustomerRecTime());
     }
 
 
