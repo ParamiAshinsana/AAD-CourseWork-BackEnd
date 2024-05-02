@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin
 @RestController
 @RequestMapping("api/v1/customers")
 @RequiredArgsConstructor
@@ -21,23 +22,23 @@ public class CustomerController {
         return customerService.saveCustomer(customerDTO);
     }
 
-    @PatchMapping(value = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @PutMapping(value = "/updateCustomer/{id}")
     public void updateCustomer(@RequestBody CustomerDTO customerDTO, @PathVariable ("id") String id){
         customerService.updateCustomer(id,customerDTO);
         System.out.println("Customer Updated!");
     }
 
-    @DeleteMapping(value = "/{id}")
+    @DeleteMapping("/deleteCustomer/{id}")
     public void deleteCustomer(@PathVariable ("id") String id){
         customerService.deleteCustomer(id);
     }
 
-    @GetMapping(produces = "application/json")
+    @GetMapping(value = "/getAllCustomer")
     List<CustomerDTO> getAllCustomers(){
         return customerService.getAllCustomer();
     }
 
-    @GetMapping(value = "/{id}",produces = "application/json")
+    @GetMapping("/getSelectedCustomer/{id}")
     ResponseEntity<CustomerDTO> getSelectedCustomer(@PathVariable ("id") String id){
         CustomerDTO selectedCustomer = customerService.getSelectedCustomer(id);
         return selectedCustomer != null ? ResponseEntity.ok(selectedCustomer) : ResponseEntity.status(HttpStatus.NOT_FOUND).build();
