@@ -13,7 +13,7 @@ public class CustomerDTO implements SuperDTO{
     private String customerDOB;
     private String customerGender;
     private String customerJoinDate;
-    private String customerLoyaltyPoints;
+    private int customerLoyaltyPoints;
     private String loyaltyLevel;
     private String customerAddress;
 //    private String customerAddress01;
