@@ -20,7 +20,8 @@ public class CustomerEntity {
     private Gender customerGender;
     private String customerJoinDate;
     private int customerLoyaltyPoints;
-    private String loyaltyLevel;
+    @Enumerated(EnumType.STRING)
+    private Level loyaltyLevel;
     private String customerAddress;
 //    private String customerAddress01;
 //    private String customerAddress02;
