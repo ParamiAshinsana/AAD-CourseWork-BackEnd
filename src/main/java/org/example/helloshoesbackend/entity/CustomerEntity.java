@@ -1,8 +1,6 @@
 package org.example.helloshoesbackend.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,7 +15,9 @@ public class CustomerEntity {
     private String customerCode;
     private String customerName;
     private String customerDOB;
-    private String customerGender;
+//    @Enumerated(EnumType.ORDINAL)
+    @Enumerated(EnumType.STRING)
+    private Gender customerGender;
     private String customerJoinDate;
     private int customerLoyaltyPoints;
     private String loyaltyLevel;
