@@ -54,10 +54,10 @@ public class CustomerServiceIMPL implements CustomerService {
         if(!tmpCustomer.isPresent()) throw new NotFoundException("CustomerController not found");
         tmpCustomer.get().setCustomerName(customerDTO.getCustomerName());
         tmpCustomer.get().setCustomerDOB(customerDTO.getCustomerDOB());
-        tmpCustomer.get().setCustomerGender(Gender.valueOf(customerDTO.getCustomerGender()));
+        tmpCustomer.get().setCustomerGender(Gender.valueOf(String.valueOf(customerDTO.getCustomerGender())));
         tmpCustomer.get().setCustomerJoinDate(customerDTO.getCustomerJoinDate());
         tmpCustomer.get().setCustomerLoyaltyPoints(customerDTO.getCustomerLoyaltyPoints());
-        tmpCustomer.get().setLoyaltyLevel(Level.valueOf(customerDTO.getLoyaltyLevel()));
+        tmpCustomer.get().setLoyaltyLevel(Level.valueOf(String.valueOf(customerDTO.getLoyaltyLevel())));
         tmpCustomer.get().setCustomerAddress(customerDTO.getCustomerAddress());
         tmpCustomer.get().setCustomerContact(customerDTO.getCustomerContact());
         tmpCustomer.get().setCustomerEmail(customerDTO.getCustomerEmail());
