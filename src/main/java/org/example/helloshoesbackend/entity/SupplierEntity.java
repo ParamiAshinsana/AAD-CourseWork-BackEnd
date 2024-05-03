@@ -16,12 +16,12 @@ public class SupplierEntity {
     private String supplierName;
     @Enumerated(EnumType.STRING)
     private Category category;
-    private String customerAddress01;
-    private String customerAddress02;
-    private String customerAddress03;
-    private String customerAddress04;
-    private String customerAddress05;
-    private String customerAddress06;
+    private String supplierAddress01;
+    private String supplierAddress02;
+    private String supplierAddress03;
+    private String supplierAddress04;
+    private String supplierAddress05;
+    private String supplierAddress06;
     private String ContactNo01;
     private String ContactNo02;
     private String supplierEmail;
