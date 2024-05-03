@@ -16,4 +16,10 @@ public class SupplierController {
     public SupplierDTO saveSupplier(@RequestBody SupplierDTO supplierDTO){
         return supplierService.saveSupplier(supplierDTO);
     }
+
+    @PutMapping(value = "/updateSupplier/{id}")
+    public void updateSupplier(@RequestBody SupplierDTO supplierDTO, @PathVariable ("id") String id){
+        supplierService.updateSupplier(id,supplierDTO);
+        System.out.println("Supplier Updated!");
+    }
 }
