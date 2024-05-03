@@ -3,6 +3,8 @@ package org.example.helloshoesbackend.dto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.example.helloshoesbackend.entity.Gender;
+import org.example.helloshoesbackend.entity.Level;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -11,10 +13,10 @@ public class CustomerDTO implements SuperDTO{
     private String customerCode;
     private String customerName;
     private String customerDOB;
-    private String customerGender;
+    private Gender customerGender;
     private String customerJoinDate;
     private int customerLoyaltyPoints;
-    private String loyaltyLevel;
+    private Level loyaltyLevel;
     private String customerAddress;
 //    private String customerAddress01;
 //    private String customerAddress02;
