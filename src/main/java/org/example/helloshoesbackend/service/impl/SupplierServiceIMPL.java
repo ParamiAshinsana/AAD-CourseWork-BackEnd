@@ -33,12 +33,13 @@ public class SupplierServiceIMPL implements SupplierService {
 
     @Override
     public List<SupplierDTO> getAllSupplier() {
-        return null;
+        return supplierMapping.toSupplierDTOList(supplierDAO.findAll());
     }
 
     @Override
     public SupplierDTO getSelectedSupplier(String id) {
-        return null;
+        if(!supplierDAO.existsById(id)) throw new NotFoundException("Supplier not found");
+        return supplierMapping.toSupplierDTO(supplierDAO.getReferenceById(id));
     }
 
     @Override
