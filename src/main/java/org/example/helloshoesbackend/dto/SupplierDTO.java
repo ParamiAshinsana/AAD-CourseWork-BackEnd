@@ -18,7 +18,7 @@ public class SupplierDTO implements SuperDTO{
     private String supplierAddress04;
     private String supplierAddress05;
     private String supplierAddress06;
-    private String ContactNo01;
-    private String ContactNo02;
+    private String contactNo01;
+    private String contactNo02;
     private String supplierEmail;
 }
