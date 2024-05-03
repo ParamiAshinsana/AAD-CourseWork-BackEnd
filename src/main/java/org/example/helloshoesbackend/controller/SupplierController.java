@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 public class SupplierController {
     private final SupplierService supplierService;
 
-    @PostMapping(value = "/saveCustomer")
+    @PostMapping(value = "/saveSupplier")
     public SupplierDTO saveSupplier(@RequestBody SupplierDTO supplierDTO){
         return supplierService.saveSupplier(supplierDTO);
     }
