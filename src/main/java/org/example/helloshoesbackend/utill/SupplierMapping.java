@@ -1,9 +1,7 @@
 package org.example.helloshoesbackend.utill;
 
 import lombok.RequiredArgsConstructor;
-import org.example.helloshoesbackend.dto.SuperDTO;
 import org.example.helloshoesbackend.dto.SupplierDTO;
-import org.example.helloshoesbackend.entity.CustomerEntity;
 import org.example.helloshoesbackend.entity.SupplierEntity;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
