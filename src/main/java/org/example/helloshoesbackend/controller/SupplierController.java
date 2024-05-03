@@ -22,4 +22,9 @@ public class SupplierController {
         supplierService.updateSupplier(id,supplierDTO);
         System.out.println("Supplier Updated!");
     }
+
+    @DeleteMapping("/deleteSupplier/{id}")
+    public void deleteSupplier(@PathVariable ("id") String id){
+        supplierService.deleteSupplier(id);
+    }
 }
