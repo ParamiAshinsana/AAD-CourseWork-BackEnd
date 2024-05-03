@@ -1,10 +1,9 @@
 package org.example.helloshoesbackend.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.example.helloshoesbackend.dto.SupplierDTO;
 import org.example.helloshoesbackend.service.SupplierService;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin
 @RestController
@@ -12,4 +11,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class SupplierController {
     private final SupplierService supplierService;
+
+    @PostMapping(value = "/saveCustomer")
+    public SupplierDTO saveSupplier(@RequestBody SupplierDTO supplierDTO){
+        return supplierService.saveSupplier(supplierDTO);
+    }
 }
