@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
@@ -25,4 +27,7 @@ public class SupplierEntity {
     private String contactNo01;
     private String contactNo02;
     private String supplierEmail;
+
+    @OneToMany(mappedBy = "supplierEntity")
+    private List<InventoryEntity> inventoryEntities ;
 }
