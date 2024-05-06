@@ -22,7 +22,6 @@ public class InventoryEntity {
     private double unitPriceBuy;
     private double expectedProfit;
     private double profitMargin;
-    private String status;
 
     @ManyToOne
     private SupplierEntity supplierEntity;
