@@ -22,5 +22,8 @@ public class InventoryServiceIMPL implements InventoryService {
     private final InventoryMapping inventoryMapping;
 
 
-
+    @Override
+    public InventoryDTO saveInventory(InventoryDTO inventoryDTO) {
+        return null;
+    }
 }
