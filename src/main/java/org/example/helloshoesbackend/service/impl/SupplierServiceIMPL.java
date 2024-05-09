@@ -3,9 +3,6 @@ package org.example.helloshoesbackend.service.impl;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.example.helloshoesbackend.dto.SupplierDTO;
-import org.example.helloshoesbackend.entity.CustomerEntity;
-import org.example.helloshoesbackend.entity.Gender;
-import org.example.helloshoesbackend.entity.Level;
 import org.example.helloshoesbackend.entity.SupplierEntity;
 import org.example.helloshoesbackend.exception.NotFoundException;
 import org.example.helloshoesbackend.repository.SupplierDAO;
@@ -63,5 +60,16 @@ public class SupplierServiceIMPL implements SupplierService {
         tmpSupplier.get().setContactNo01(supplierDTO.getContactNo01());
         tmpSupplier.get().setContactNo02(supplierDTO.getContactNo02());
         tmpSupplier.get().setSupplierEmail(supplierDTO.getSupplierEmail());
+    }
+
+    @Override
+    public String getSupplierName(String id) {
+        if(!supplierDAO.existsById(id)) throw new NotFoundException("Supplier not found");
+        return supplierDAO.findNameById(id);
+    }
+
+    @Override
+    public List<String> getAllSuppliersCode() {
+        return supplierDAO.findSupplierCodes();
     }
 }
