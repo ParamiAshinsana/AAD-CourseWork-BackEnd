@@ -43,4 +43,14 @@ public class SupplierController {
         SupplierDTO selectedSupplier = supplierService.getSelectedSupplier(id);
         return selectedSupplier != null ? ResponseEntity.ok(selectedSupplier) : ResponseEntity.status(HttpStatus.NOT_FOUND).build();
     }
+    @GetMapping(value = "/getSupplierName/{id}")
+    public String getSuppliersName(@PathVariable("id")String id ){
+        return supplierService.getSupplierName(id);
+    }
+
+    @GetMapping(value = "/getAllSupplierCode")
+    List<String> getAllSuppliersCode(){
+        return supplierService.getAllSuppliersCode();
+    }
+
 }
