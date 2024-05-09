@@ -24,6 +24,9 @@ public class InventoryServiceIMPL implements InventoryService {
 
     @Override
     public InventoryDTO saveInventory(InventoryDTO inventoryDTO) {
-        return null;
+        InventoryEntity inventoryEntity = inventoryMapping.toInventory(inventoryDTO);
+
+        inventoryEntity = inventoryDAO.save(inventoryEntity);
+        return inventoryMapping.toInventoryDTO(inventoryEntity);
     }
 }
