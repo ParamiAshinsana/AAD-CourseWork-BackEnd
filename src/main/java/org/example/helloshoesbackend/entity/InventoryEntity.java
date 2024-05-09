@@ -14,6 +14,7 @@ public class InventoryEntity {
     @Id
     private String itemCode;
     private String itemDescription;
+    @Column(columnDefinition = "LONGTEXT")
     private String itemPicture;
     private String category;
     private int itemQty;
