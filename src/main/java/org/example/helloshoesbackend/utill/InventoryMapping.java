@@ -24,6 +24,8 @@ public class InventoryMapping {
         return  modelMapper.map(inventoryDTO, InventoryEntity.class);
     }
     public List<InventoryDTO> toInventoryDTOList(List<InventoryEntity> inventoryEntities) {
+        System.out.println("get MApping");
+
         return modelMapper.map(inventoryEntities, List.class);
     }
 
