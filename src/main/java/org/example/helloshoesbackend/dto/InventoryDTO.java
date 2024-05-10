@@ -16,9 +16,11 @@ public class InventoryDTO {
     private int itemQty;
 //    private String supplierCode;
 //    private String supplierName;
+    private String supplierEntity;
     private double unitPriceSale;
     private double unitPriceBuy;
     private double expectedProfit;
     private double profitMargin;
+
 
 }
