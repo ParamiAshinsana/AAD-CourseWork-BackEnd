@@ -28,4 +28,5 @@ public class InventoryEntity {
 
     @ManyToOne
     private SupplierEntity supplierEntity;
+
 }
