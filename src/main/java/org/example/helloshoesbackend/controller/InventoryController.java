@@ -2,6 +2,7 @@ package org.example.helloshoesbackend.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.example.helloshoesbackend.dto.InventoryDTO;
+import org.example.helloshoesbackend.dto.SupplierDTO;
 import org.example.helloshoesbackend.service.InventoryService;
 import org.example.helloshoesbackend.utilMatters.UtilMatters;
 import org.springframework.web.bind.annotation.*;
@@ -36,7 +37,9 @@ public class InventoryController {
         inventoryDTO.setCategory(iCategory);
         inventoryDTO.setItemSize(Integer.parseInt(iSize));
         inventoryDTO.setItemQty(Integer.parseInt(iQty));
-        inventoryDTO.setSupplierEntity(supCode);
+        SupplierDTO supplierDTO=new SupplierDTO();
+        supplierDTO.setSupplierCode(supCode);
+        inventoryDTO.setSupplierEntity(supplierDTO);
         inventoryDTO.setUnitPriceSale(Double.parseDouble(iUnitPriceSale));
         inventoryDTO.setUnitPriceBuy(Double.parseDouble(iUnitPriceBuy));
         inventoryDTO.setExpectedProfit(Double.parseDouble(iExpectedProfit));
