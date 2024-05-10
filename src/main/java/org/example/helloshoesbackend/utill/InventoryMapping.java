@@ -18,10 +18,14 @@ public class InventoryMapping {
     public InventoryDTO toInventoryDTO(InventoryEntity inventoryEntity) {
         return  modelMapper.map(inventoryEntity, InventoryDTO.class);
     }
+
+
     public InventoryEntity toInventory(InventoryDTO inventoryDTO) {
         return  modelMapper.map(inventoryDTO, InventoryEntity.class);
     }
     public List<InventoryDTO> toInventoryDTOList(List<InventoryEntity> inventoryEntities) {
         return modelMapper.map(inventoryEntities, List.class);
     }
+
+
 }
