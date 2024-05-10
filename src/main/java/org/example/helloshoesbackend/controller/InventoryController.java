@@ -8,6 +8,8 @@ import org.example.helloshoesbackend.utilMatters.UtilMatters;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.List;
+
 
 @CrossOrigin
 @RestController
@@ -47,5 +49,12 @@ public class InventoryController {
 
         return inventoryService.saveInventory(inventoryDTO);
 
+    }
+
+    @GetMapping(value = "/getAllInventory")
+    List<InventoryDTO> getAllInventories(){
+        System.out.println("get Controller");
+        System.out.println(inventoryDTO);
+        return inventoryService.getAllInventory();
     }
 }
