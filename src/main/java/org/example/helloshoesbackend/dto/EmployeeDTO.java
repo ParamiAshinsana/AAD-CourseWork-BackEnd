@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.example.helloshoesbackend.entity.Gender;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @AllArgsConstructor
@@ -14,12 +15,12 @@ public class EmployeeDTO {
     private String employeeCode;
     private String employeeName;
     private String employeeProfilePicture;
+    private LocalDate employeeDob;
     private Gender employeeGender;
     private String employeeStatus;
     private String employeeDesignation;
     private String employeeAccessRole;
-    private Date employeeDob;
-    private Date employeeJoinedDate;
+    private LocalDate employeeJoinedDate;
     private String attachedBranch;
     private String employeeAddress;
     private String employeeContact;
