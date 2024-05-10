@@ -1,6 +1,7 @@
 package org.example.helloshoesbackend.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.example.helloshoesbackend.dto.CustomerDTO;
 import org.example.helloshoesbackend.dto.EmployeeDTO;
 import org.example.helloshoesbackend.dto.InventoryDTO;
 import org.example.helloshoesbackend.entity.Gender;
@@ -9,7 +10,9 @@ import org.example.helloshoesbackend.utilMatters.UtilMatters;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Date;
+import java.util.List;
 
 @CrossOrigin
 @RestController
@@ -40,12 +43,12 @@ public class EmployeeController {
         employeeDTO.setEmployeeCode(empCode);
         employeeDTO.setEmployeeName(empName);
         employeeDTO.setEmployeeProfilePicture(base64ProPic);
-        employeeDTO.setEmployeeDob(new Date(empDOB));
+        employeeDTO.setEmployeeDob(LocalDate.parse(empDOB));
         employeeDTO.setEmployeeGender(Gender.valueOf(empGender));
         employeeDTO.setEmployeeStatus(empStatus);
         employeeDTO.setEmployeeDesignation(empDesignation);
         employeeDTO.setEmployeeAccessRole(empAccessRole);
-        employeeDTO.setEmployeeJoinedDate(new Date(empJoinedDate));
+        employeeDTO.setEmployeeJoinedDate(LocalDate.parse(empJoinedDate));
         employeeDTO.setAttachedBranch(empBranch);
         employeeDTO.setEmployeeAddress(empAddress);
         employeeDTO.setEmployeeContact(empContact);
@@ -55,5 +58,10 @@ public class EmployeeController {
 
         return employeeService.saveEmployee(employeeDTO);
 
+    }
+
+    @GetMapping(value = "/getAllEmployee")
+    List<EmployeeDTO> getAllEmployees(){
+        return employeeService.getAllEmployee();
     }
 }
