@@ -6,7 +6,7 @@ import org.example.helloshoesbackend.entity.SupplierEntity;
 import java.util.List;
 
 public interface InventoryService {
-
-
     InventoryDTO saveInventory(InventoryDTO inventoryDTO);
+
+    List<InventoryDTO> getAllInventory();
 }
