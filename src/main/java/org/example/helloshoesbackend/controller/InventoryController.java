@@ -22,8 +22,9 @@ public class InventoryController {
             @RequestParam("iDesc")String iDesc,
             @RequestParam("files") MultipartFile files,
             @RequestParam("iCategory")String iCategory,
-            @RequestParam("iQty")String iQty,
             @RequestParam("iSize")String iSize,
+            @RequestParam("iQty")String iQty,
+            @RequestParam("supCode")String supCode,
             @RequestParam("iUnitPriceSale")String iUnitPriceSale,
             @RequestParam("iUnitPriceBuy")String iUnitPriceBuy,
             @RequestParam("iExpectedProfit")String iExpectedProfit,
@@ -33,8 +34,9 @@ public class InventoryController {
         inventoryDTO.setItemDescription(iDesc);
         inventoryDTO.setItemPicture(base64ProPic);
         inventoryDTO.setCategory(iCategory);
-        inventoryDTO.setItemQty(Integer.parseInt(iQty));
         inventoryDTO.setItemSize(Integer.parseInt(iSize));
+        inventoryDTO.setItemQty(Integer.parseInt(iQty));
+        inventoryDTO.setSupplierEntity(supCode);
         inventoryDTO.setUnitPriceSale(Double.parseDouble(iUnitPriceSale));
         inventoryDTO.setUnitPriceBuy(Double.parseDouble(iUnitPriceBuy));
         inventoryDTO.setExpectedProfit(Double.parseDouble(iExpectedProfit));
