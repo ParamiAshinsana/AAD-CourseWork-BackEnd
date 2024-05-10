@@ -31,7 +31,7 @@ public class EmployeeServiceIMPL implements EmployeeService {
 
     @Override
     public List<EmployeeDTO> getAllEmployee() {
-        return null;
+        return employeeMapping.toEmployeeDTOList(employeeDAO.findAll());
     }
 
     @Override
