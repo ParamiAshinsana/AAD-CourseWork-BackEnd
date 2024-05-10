@@ -17,8 +17,10 @@ public class InventoryEntity {
     @Column(columnDefinition = "LONGTEXT")
     private String itemPicture;
     private String category;
-    private int itemQty;
     private int itemSize;
+    private int itemQty;
+//    private String supplierCode;
+//    private String supplierName;
     private double unitPriceSale;
     private double unitPriceBuy;
     private double expectedProfit;
