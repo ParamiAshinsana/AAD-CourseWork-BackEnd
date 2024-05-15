@@ -3,15 +3,11 @@ package org.example.helloshoesbackend.service.impl;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.example.helloshoesbackend.dto.EmployeeDTO;
-import org.example.helloshoesbackend.dto.InventoryDTO;
 import org.example.helloshoesbackend.entity.EmployeeEntity;
-import org.example.helloshoesbackend.entity.InventoryEntity;
 import org.example.helloshoesbackend.exception.NotFoundException;
 import org.example.helloshoesbackend.repository.EmployeeDAO;
-import org.example.helloshoesbackend.repository.InventoryDAO;
 import org.example.helloshoesbackend.service.EmployeeService;
 import org.example.helloshoesbackend.utill.EmployeeMapping;
-import org.example.helloshoesbackend.utill.InventoryMapping;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -47,7 +43,8 @@ public class EmployeeServiceIMPL implements EmployeeService {
     }
 
     @Override
-    public void updateEmployee(String id, EmployeeDTO employeeDTO) {
+    public EmployeeDTO updateEmployee(String id, EmployeeDTO employeeDTO) {
 
+        return employeeDTO;
     }
 }
