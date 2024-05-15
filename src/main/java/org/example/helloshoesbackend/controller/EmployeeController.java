@@ -9,9 +9,7 @@ import org.example.helloshoesbackend.service.EmployeeService;
 import org.example.helloshoesbackend.utilMatters.UtilMatters;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
 
 @CrossOrigin
@@ -63,5 +61,10 @@ public class EmployeeController {
     @GetMapping(value = "/getAllEmployee")
     List<EmployeeDTO> getAllEmployees(){
         return employeeService.getAllEmployee();
+    }
+
+    @DeleteMapping("/deleteEmployee/{id}")
+    public void deleteEmployee(@PathVariable ("id") String id){
+        employeeService.deleteEmployee(id);
     }
 }
