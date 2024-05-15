@@ -10,5 +10,6 @@ public interface EmployeeService {
     List<EmployeeDTO> getAllEmployee();
     EmployeeDTO getSelectedEmployee(String id);
     void deleteEmployee(String id);
-    void updateEmployee(String id, EmployeeDTO employeeDTO);
+    EmployeeDTO updateEmployee(String id, EmployeeDTO employeeDTO);
+//    void updateEmployee(String id, EmployeeDTO employeeDTO);
 }
