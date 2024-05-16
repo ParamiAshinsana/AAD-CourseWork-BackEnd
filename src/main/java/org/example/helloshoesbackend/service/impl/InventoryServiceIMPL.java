@@ -33,4 +33,9 @@ public class InventoryServiceIMPL implements InventoryService {
         System.out.println(inventoryDAO);
         return inventoryMapping.toInventoryDTOList(inventoryDAO.findAll());
     }
+
+    @Override
+    public void deleteInventory(String id) {
+
+    }
 }
