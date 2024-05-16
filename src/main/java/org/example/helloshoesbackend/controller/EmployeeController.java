@@ -60,9 +60,53 @@ public class EmployeeController {
 
 
 
+//    @PutMapping(value = "/updateEmployee/{empCode}")
+//    public EmployeeDTO updateEmployee(
+//            @RequestParam("empCode") String empCode,
+//            @RequestParam("empName") String empName,
+//            @RequestParam("files") MultipartFile files,
+//            @RequestParam("empDOB") String empDOB,
+//            @RequestParam("empGender") String empGender,
+//            @RequestParam("empStatus") String empStatus,
+//            @RequestParam("empDesignation") String empDesignation,
+//            @RequestParam("empAccessRole") String empAccessRole,
+//            @RequestParam("empJoinedDate") String empJoinedDate,
+//            @RequestParam("empBranch") String empBranch,
+//            @RequestParam("empAddress") String empAddress,
+//            @RequestParam("empContact") String empContact,
+//            @RequestParam("empEmail") String empEmail,
+//            @RequestParam("empGuardianNAme") String empGuardianNAme,
+//            @RequestParam("empEmergencyContact") String empEmergencyContact,
+//            @PathVariable("empCode") String emplCode) {
+//
+//        // Convert the profile picture to Base64
+//        String base64ProPic = UtilMatters.convertBase64(files);
+//
+//        // Create and populate the EmployeeDTO object
+//        EmployeeDTO employeeDTO = new EmployeeDTO();
+//        employeeDTO.setEmployeeCode(empCode);
+//        employeeDTO.setEmployeeName(empName);
+//        employeeDTO.setEmployeeProfilePicture(base64ProPic);
+//        employeeDTO.setEmployeeDob(LocalDate.parse(empDOB));
+//        employeeDTO.setEmployeeGender(Gender.valueOf(empGender));
+//        employeeDTO.setEmployeeStatus(empStatus);
+//        employeeDTO.setEmployeeDesignation(empDesignation);
+//        employeeDTO.setEmployeeAccessRole(empAccessRole);
+//        employeeDTO.setEmployeeJoinedDate(LocalDate.parse(empJoinedDate));
+//        employeeDTO.setAttachedBranch(empBranch);
+//        employeeDTO.setEmployeeAddress(empAddress);
+//        employeeDTO.setEmployeeContact(empContact);
+//        employeeDTO.setEmployeeEmail(empEmail);
+//        employeeDTO.setNameTheGuardian(empGuardianNAme);
+//        employeeDTO.setEmergencyContact(empEmergencyContact);
+//
+//        // Call the service to update the employee
+//        return employeeService.updateEmployee(emplCode, employeeDTO);
+//    }
+
     @PutMapping(value = "/updateEmployee/{empCode}")
     public EmployeeDTO updateEmployee(
-            @RequestParam("empCode") String empCode,
+            @PathVariable("empCode") String empCode,
             @RequestParam("empName") String empName,
             @RequestParam("files") MultipartFile files,
             @RequestParam("empDOB") String empDOB,
@@ -76,8 +120,7 @@ public class EmployeeController {
             @RequestParam("empContact") String empContact,
             @RequestParam("empEmail") String empEmail,
             @RequestParam("empGuardianNAme") String empGuardianNAme,
-            @RequestParam("empEmergencyContact") String empEmergencyContact,
-            @PathVariable("empCode") String emplCode) {
+            @RequestParam("empEmergencyContact") String empEmergencyContact) {
 
         // Convert the profile picture to Base64
         String base64ProPic = UtilMatters.convertBase64(files);
@@ -101,7 +144,7 @@ public class EmployeeController {
         employeeDTO.setEmergencyContact(empEmergencyContact);
 
         // Call the service to update the employee
-        return employeeService.updateEmployee(emplCode, employeeDTO);
+        return employeeService.updateEmployee(empCode, employeeDTO);
     }
 
     @GetMapping(value = "/getAllEmployee")
