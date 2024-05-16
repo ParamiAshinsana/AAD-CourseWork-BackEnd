@@ -14,4 +14,11 @@ public class UtilMatters {
         }
     }
 
+//    public static byte[] convertBase64ToBytes11(String data) {
+//        try {
+//            return Base64.getDecoder().decode(data);
+//        } catch (Exception e) {
+//            throw new RuntimeException(e);
+//        }
+//    }
 }
