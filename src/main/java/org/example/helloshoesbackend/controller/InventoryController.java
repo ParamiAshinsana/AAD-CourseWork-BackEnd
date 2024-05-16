@@ -57,4 +57,9 @@ public class InventoryController {
         System.out.println(inventoryDTO);
         return inventoryService.getAllInventory();
     }
+
+    @DeleteMapping("/deleteInventory/{id}")
+    public void deleteInventory(@PathVariable ("id") String id){
+        inventoryService.deleteInventory(id);
+    }
 }
