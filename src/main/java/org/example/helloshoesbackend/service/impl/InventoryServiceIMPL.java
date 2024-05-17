@@ -40,4 +40,11 @@ public class InventoryServiceIMPL implements InventoryService {
         if(!inventoryDAO.existsById(id)) throw new NotFoundException("Inventory not found");
         inventoryDAO.deleteById(id);
     }
+
+
+    // To Sale Service Controller
+    @Override
+    public List<String> getAllItemCodes() {
+        return null;
+    }
 }
