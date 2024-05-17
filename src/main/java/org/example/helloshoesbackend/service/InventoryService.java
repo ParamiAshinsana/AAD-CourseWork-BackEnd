@@ -14,5 +14,5 @@ public interface InventoryService {
 
     List<String> getAllItemCodes();
 
-    String getInventoryDetails(String id);
+    String getInventoryDescription(String id);
 }
