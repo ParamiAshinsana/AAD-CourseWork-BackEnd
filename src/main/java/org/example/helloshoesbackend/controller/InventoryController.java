@@ -79,4 +79,9 @@ public class InventoryController {
     public String getInventoryPrice(@PathVariable("id")String id ){
         return inventoryService.getInventoryPrices(id);
     }
+
+    @GetMapping(value = "/getShoeSize/{id}")
+    public String getAllShoeSize(@PathVariable("id")String id ){
+        return inventoryService.getShoeSizes(id);
+    }
 }
