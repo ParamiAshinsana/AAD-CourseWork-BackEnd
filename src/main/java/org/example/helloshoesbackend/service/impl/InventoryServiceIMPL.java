@@ -59,4 +59,10 @@ public class InventoryServiceIMPL implements InventoryService {
         if(!inventoryDAO.existsById(id)) throw new NotFoundException("Inventory not found");
         return inventoryDAO.findInventoryPricessById(id);
     }
+
+    @Override
+    public String getShoeSizes(String id) {
+        if(!inventoryDAO.existsById(id)) throw new NotFoundException("Inventory not found");
+        return inventoryDAO.findShoeSizeById(id);
+    }
 }
