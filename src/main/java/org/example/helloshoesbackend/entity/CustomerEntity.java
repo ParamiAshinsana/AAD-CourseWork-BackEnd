@@ -33,6 +33,6 @@ public class CustomerEntity {
     private String customerContact;
     private String customerEmail;
 
-    @OneToMany
+    @OneToMany(mappedBy = "customerEntity")
     private List<SaleEntity> saleEntities ;
 }
