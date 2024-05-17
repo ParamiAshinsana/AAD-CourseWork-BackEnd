@@ -2,6 +2,7 @@ package org.example.helloshoesbackend.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -20,4 +21,7 @@ public class SaleEntity {
     private String paymentMethod;
     private double addedPoints;
     private String cashierName;
+
+    @ManyToOne
+    private CustomerEntity customerEntity;
 }
