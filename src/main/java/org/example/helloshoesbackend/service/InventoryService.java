@@ -17,4 +17,6 @@ public interface InventoryService {
     String getInventoryDescription(String id);
 
     String getInventoryPrices(String id);
+
+    String getShoeSizes(String id);
 }
