@@ -13,4 +13,6 @@ public interface CustomerService {
     void updateCustomer(String id, CustomerDTO customerDTO);
 
     String getCustomerName(String id);
+
+    List<String> getAllCustomerCode();
 }
