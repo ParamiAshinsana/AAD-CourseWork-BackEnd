@@ -47,4 +47,9 @@ public class InventoryServiceIMPL implements InventoryService {
     public List<String> getAllItemCodes() {
         return inventoryDAO.findItemCodes();
     }
+
+    @Override
+    public String getInventoryDetails(String id) {
+        return null;
+    }
 }
