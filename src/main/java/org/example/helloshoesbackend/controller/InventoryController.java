@@ -69,4 +69,9 @@ public class InventoryController {
     List<String> getAllItemCode(){
         return inventoryService.getAllItemCodes();
     }
+
+    @GetMapping(value = "/getInventoryDetails/{id}")
+    public String getInventoryDetail(@PathVariable("id")String id ){
+        return inventoryService.getInventoryDetails(id);
+    }
 }
