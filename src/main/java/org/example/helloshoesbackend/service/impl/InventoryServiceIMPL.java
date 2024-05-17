@@ -51,6 +51,12 @@ public class InventoryServiceIMPL implements InventoryService {
     @Override
     public String getInventoryDescription(String id) {
         if(!inventoryDAO.existsById(id)) throw new NotFoundException("Inventory not found");
-        return inventoryDAO.findInventoryDetailsById(id);
+        return inventoryDAO.findInventoryDescriptionById(id);
+    }
+
+    @Override
+    public String getInventoryPrices(String id) {
+        if(!inventoryDAO.existsById(id)) throw new NotFoundException("Inventory not found");
+        return inventoryDAO.findInventoryPricessById(id);
     }
 }
