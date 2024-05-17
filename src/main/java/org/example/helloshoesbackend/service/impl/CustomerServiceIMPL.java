@@ -72,7 +72,7 @@ public class CustomerServiceIMPL implements CustomerService {
 
     @Override
     public List<String> getAllCustomerCode() {
-        return null;
+        return customerDAO.findCustomerCodes();
     }
 
 
