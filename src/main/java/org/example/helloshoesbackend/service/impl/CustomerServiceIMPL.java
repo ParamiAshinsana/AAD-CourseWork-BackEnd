@@ -67,7 +67,8 @@ public class CustomerServiceIMPL implements CustomerService {
     // To Sale Service Controller
     @Override
     public String getCustomerName(String id) {
-        return null;
+        if(!customerDAO.existsById(id)) throw new NotFoundException("Customer not found");
+        return customerDAO.findCustomerNameById(id);
     }
 
     @Override
