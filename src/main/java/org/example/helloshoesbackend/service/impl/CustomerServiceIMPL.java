@@ -68,5 +68,10 @@ public class CustomerServiceIMPL implements CustomerService {
         return null;
     }
 
+    @Override
+    public List<String> getAllCustomerCode() {
+        return null;
+    }
+
 
 }
