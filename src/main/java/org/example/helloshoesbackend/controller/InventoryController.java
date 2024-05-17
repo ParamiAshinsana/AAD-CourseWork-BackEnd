@@ -70,8 +70,8 @@ public class InventoryController {
         return inventoryService.getAllItemCodes();
     }
 
-    @GetMapping(value = "/getInventoryDetails/{id}")
-    public String getInventoryDetail(@PathVariable("id")String id ){
-        return inventoryService.getInventoryDetails(id);
+    @GetMapping(value = "/getInventoryDescription/{id}")
+    public String getInventoryDescriptions(@PathVariable("id")String id ){
+        return inventoryService.getInventoryDescription(id);
     }
 }
