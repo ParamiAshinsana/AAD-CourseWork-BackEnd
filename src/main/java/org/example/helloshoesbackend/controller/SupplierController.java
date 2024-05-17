@@ -39,7 +39,7 @@ public class SupplierController {
     }
 
     @GetMapping("/getSelectedSupplier/{id}")
-    ResponseEntity<SupplierDTO> getSelectedCustomer(@PathVariable ("id") String id){
+    ResponseEntity<SupplierDTO> getSelectedSupplier(@PathVariable ("id") String id){
         SupplierDTO selectedSupplier = supplierService.getSelectedSupplier(id);
         return selectedSupplier != null ? ResponseEntity.ok(selectedSupplier) : ResponseEntity.status(HttpStatus.NOT_FOUND).build();
     }
