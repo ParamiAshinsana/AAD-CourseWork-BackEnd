@@ -3,6 +3,7 @@ package org.example.helloshoesbackend.controller;
 import lombok.RequiredArgsConstructor;
 import org.example.helloshoesbackend.dto.CustomerDTO;
 import org.example.helloshoesbackend.dto.SaleDTO;
+import org.example.helloshoesbackend.dto.SupplierDTO;
 import org.example.helloshoesbackend.service.SaleService;
 import org.springframework.web.bind.annotation.*;
 
