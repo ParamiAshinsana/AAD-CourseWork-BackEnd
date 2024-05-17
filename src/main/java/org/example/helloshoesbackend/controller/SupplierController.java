@@ -34,7 +34,7 @@ public class SupplierController {
     }
 
     @GetMapping(value = "/getAllSupplier")
-    List<SupplierDTO> getAllCustomers(){
+    List<SupplierDTO> getAllSuppliers(){
         return supplierService.getAllSupplier();
     }
 
