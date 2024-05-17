@@ -11,4 +11,6 @@ import java.util.List;
 public interface InventoryDAO extends JpaRepository<InventoryEntity, String> {
     @Query(value = "SELECT itemCode FROM Inventory", nativeQuery = true)
     List<String> findItemCodes();
+
+    String findInventoryDetailsById(String id);
 }
