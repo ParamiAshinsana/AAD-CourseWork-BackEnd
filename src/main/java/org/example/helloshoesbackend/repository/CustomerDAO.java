@@ -11,4 +11,6 @@ import java.util.List;
 public interface CustomerDAO extends JpaRepository<CustomerEntity, String> {
     @Query(value = "SELECT customerCode FROM Customer", nativeQuery = true)
     List<String> findCustomerCodes();
+
+    String findCustomerNameById(String id);
 }
