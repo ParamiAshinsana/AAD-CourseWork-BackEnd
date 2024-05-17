@@ -11,4 +11,6 @@ public interface InventoryService {
     List<InventoryDTO> getAllInventory();
 
     void deleteInventory(String id);
+
+    List<String> getAllItemCodes();
 }
