@@ -62,4 +62,11 @@ public class InventoryController {
     public void deleteInventory(@PathVariable ("id") String id){
         inventoryService.deleteInventory(id);
     }
+
+
+    // To Sale Service Controller
+    @GetMapping(value = "/getAllItemCodes")
+    List<String> getAllItemCode(){
+        return inventoryService.getAllItemCodes();
+    }
 }
