@@ -43,4 +43,16 @@ public class CustomerController {
         CustomerDTO selectedCustomer = customerService.getSelectedCustomer(id);
         return selectedCustomer != null ? ResponseEntity.ok(selectedCustomer) : ResponseEntity.status(HttpStatus.NOT_FOUND).build();
     }
+
+
+    // To Sale Service Controller
+    @GetMapping(value = "/getCustomerName/{id}")
+    public String getCustomerName(@PathVariable("id")String id ){
+        return customerService.getCustomerName(id);
+    }
+
+    @GetMapping(value = "/getAllCustomerCode")
+    List<String> getAllCustomersCode(){
+        return customerService.getAllCustomerCode();
+    }
 }
