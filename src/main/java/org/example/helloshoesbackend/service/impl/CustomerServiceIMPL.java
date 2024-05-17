@@ -63,6 +63,8 @@ public class CustomerServiceIMPL implements CustomerService {
         tmpCustomer.get().setCustomerEmail(customerDTO.getCustomerEmail());
     }
 
+
+    // To Sale Service Controller
     @Override
     public String getCustomerName(String id) {
         return null;
