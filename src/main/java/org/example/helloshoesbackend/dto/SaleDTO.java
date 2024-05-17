@@ -8,4 +8,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 public class SaleDTO {
+    private String orderNo;
+    private String orderItemQty;
+    private double totalPrice;
+    private String paymentMethod;
+    private double addedPoints;
+    private String cashierName;
 }
