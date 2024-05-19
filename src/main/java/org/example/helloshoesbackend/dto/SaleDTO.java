@@ -1,12 +1,11 @@
 package org.example.helloshoesbackend.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
+@Getter
+@Setter
 public class SaleDTO {
     private String orderNo;
     private String orderItemQty;
