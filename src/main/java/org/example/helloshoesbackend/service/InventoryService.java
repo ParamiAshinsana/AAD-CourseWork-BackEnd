@@ -1,7 +1,7 @@
 package org.example.helloshoesbackend.service;
 
 import org.example.helloshoesbackend.dto.InventoryDTO;
-import org.example.helloshoesbackend.entity.SupplierEntity;
+import org.example.helloshoesbackend.entity.InventoryEntity;
 
 import java.util.List;
 
@@ -14,7 +14,7 @@ public interface InventoryService {
 
     List<String> getAllItemCodes();
 
-    String getInventoryDescription(String id);
+    List<InventoryDTO> getInventoryDescription(String id);
 
     String getInventoryPrices(String id);
 
