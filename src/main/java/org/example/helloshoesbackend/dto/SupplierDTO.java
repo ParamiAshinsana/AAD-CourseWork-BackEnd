@@ -1,13 +1,12 @@
 package org.example.helloshoesbackend.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.example.helloshoesbackend.entity.Category;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
+@Getter
+@Setter
 public class SupplierDTO implements SuperDTO{
     private String supplierCode;
     private String supplierName;
