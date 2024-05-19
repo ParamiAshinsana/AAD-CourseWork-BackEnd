@@ -46,6 +46,11 @@ public class InventoryController {
         inventoryDTO.setUnitPriceBuy(Double.parseDouble(iUnitPriceBuy));
         inventoryDTO.setExpectedProfit(Double.parseDouble(iExpectedProfit));
         inventoryDTO.setProfitMargin(Double.parseDouble(iProfitMargin));
+        System.out.println(iCode);
+        System.out.println(iDesc);
+        System.out.println(iSize);
+        System.out.println(supCode);
+        System.out.println(iQty);
 
         return inventoryService.saveInventory(inventoryDTO);
 
