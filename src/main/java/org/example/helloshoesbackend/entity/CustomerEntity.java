@@ -1,15 +1,14 @@
 package org.example.helloshoesbackend.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
+@Getter
+@Setter
 @Entity
 @Table(name = "customer")
 public class CustomerEntity {
@@ -33,6 +32,6 @@ public class CustomerEntity {
     private String customerContact;
     private String customerEmail;
 
-    @OneToMany(mappedBy = "customerEntity")
+    @OneToMany(mappedBy = "customerEntity", fetch = FetchType.LAZY)
     private List<SaleEntity> saleEntities ;
 }
