@@ -71,7 +71,7 @@ public class InventoryController {
     }
 
     @GetMapping(value = "/getInventoryDescription/{id}")
-    public String getInventoryDescriptions(@PathVariable("id")String id ){
+    public List<InventoryDTO> getInventoryDescriptions(@PathVariable("id")String id ){
         return inventoryService.getInventoryDescription(id);
     }
 
