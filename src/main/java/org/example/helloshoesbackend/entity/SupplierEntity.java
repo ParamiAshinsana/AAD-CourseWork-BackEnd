@@ -1,15 +1,15 @@
 package org.example.helloshoesbackend.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
+@Getter
+@Setter
 @Entity
 @Table(name = "supplier")
 public class SupplierEntity {
@@ -28,6 +28,8 @@ public class SupplierEntity {
     private String contactNo02;
     private String supplierEmail;
 
-    @OneToMany(mappedBy = "supplierEntity")
+
+    @OneToMany(mappedBy = "supplierEntity" , fetch = FetchType.LAZY)
+    @JsonIgnore
     private List<InventoryEntity> inventoryEntities ;
 }
