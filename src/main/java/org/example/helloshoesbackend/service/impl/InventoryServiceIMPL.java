@@ -3,6 +3,8 @@ package org.example.helloshoesbackend.service.impl;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.example.helloshoesbackend.dto.InventoryDTO;
+import org.example.helloshoesbackend.entity.AccessRole;
+import org.example.helloshoesbackend.entity.EmployeeEntity;
 import org.example.helloshoesbackend.entity.InventoryEntity;
 import org.example.helloshoesbackend.exception.NotFoundException;
 import org.example.helloshoesbackend.repository.InventoryDAO;
@@ -11,6 +13,7 @@ import org.example.helloshoesbackend.utill.InventoryMapping;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -66,5 +69,27 @@ public class InventoryServiceIMPL implements InventoryService {
     public String getShoeSizes(String id) {
         if(!inventoryDAO.existsById(id)) throw new NotFoundException("Inventory not found");
         return inventoryDAO.findShoeSizeById(id);
+    }
+
+    @Override
+    public InventoryDTO updateInventory(String iCode, InventoryDTO inventoryDTO) {
+        Optional<InventoryEntity> tmpInventory = inventoryDAO.findById(iCode);
+        if (!tmpInventory.isPresent()) {
+            throw new NotFoundException("Inventory not found with code: " + iCode);
+        }
+
+        // Update the employee details
+        tmpInventory.get().setItemDescription(inventoryDTO.getItemDescription());
+        tmpInventory.get().setItemPicture(inventoryDTO.getItemPicture());
+        tmpInventory.get().setCategory(inventoryDTO.getCategory());
+        tmpInventory.get().setItemSize(inventoryDTO.getItemSize());
+        tmpInventory.get().setItemQty(inventoryDTO.getItemQty());
+        tmpInventory.get().setUnitPriceSale(inventoryDTO.getUnitPriceSale());
+        tmpInventory.get().setUnitPriceBuy(inventoryDTO.getUnitPriceBuy());
+        tmpInventory.get().setExpectedProfit(inventoryDTO.getExpectedProfit());
+        tmpInventory.get().setProfitMargin(inventoryDTO.getProfitMargin());
+
+
+        return inventoryMapping.toInventoryDTO(tmpInventory.get());
     }
 }
