@@ -19,4 +19,6 @@ public interface InventoryService {
     String getInventoryPrices(String id);
 
     String getShoeSizes(String id);
+
+    InventoryDTO updateInventory(String iCode, InventoryDTO inventoryDTO);
 }
