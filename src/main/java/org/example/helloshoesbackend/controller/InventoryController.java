@@ -56,6 +56,42 @@ public class InventoryController {
 
     }
 
+    @PutMapping(value = "/updateEmployee/{empCode}")
+    public InventoryDTO updateInventory(
+            @PathVariable("iCode")String iCode,
+            @RequestParam("iDesc")String iDesc,
+            @RequestParam("files") MultipartFile files,
+            @RequestParam("iCategory")String iCategory,
+            @RequestParam("iSize")String iSize,
+            @RequestParam("iQty")String iQty,
+            @RequestParam("supCode")String supCode,
+            @RequestParam("iUnitPriceSale")String iUnitPriceSale,
+            @RequestParam("iUnitPriceBuy")String iUnitPriceBuy,
+            @RequestParam("iExpectedProfit")String iExpectedProfit,
+            @RequestParam("iProfitMargin")String iProfitMargin) {
+
+        // Convert the profile picture to Base64
+        String base64ProPic = UtilMatters.convertBase64(files);
+
+        // Create and populate the EmployeeDTO object
+        inventoryDTO.setItemCode(iCode);
+        inventoryDTO.setItemDescription(iDesc);
+        inventoryDTO.setItemPicture(base64ProPic);
+        inventoryDTO.setCategory(iCategory);
+        inventoryDTO.setItemSize(Integer.parseInt(iSize));
+        inventoryDTO.setItemQty(Integer.parseInt(iQty));
+        SupplierDTO supplierDTO=new SupplierDTO();
+        supplierDTO.setSupplierCode(supCode);
+        inventoryDTO.setSupplierEntity(supplierDTO);
+        inventoryDTO.setUnitPriceSale(Double.parseDouble(iUnitPriceSale));
+        inventoryDTO.setUnitPriceBuy(Double.parseDouble(iUnitPriceBuy));
+        inventoryDTO.setExpectedProfit(Double.parseDouble(iExpectedProfit));
+        inventoryDTO.setProfitMargin(Double.parseDouble(iProfitMargin));
+
+        // Call the service to update the employee
+        return inventoryService.updateInventory(iCode, inventoryDTO);
+    }
+
     @GetMapping(value = "/getAllInventory")
     List<InventoryDTO> getAllInventories(){
         System.out.println("get Controller");
