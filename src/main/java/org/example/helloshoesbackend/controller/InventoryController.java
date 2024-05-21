@@ -56,7 +56,7 @@ public class InventoryController {
 
     }
 
-    @PutMapping(value = "/updateEmployee/{empCode}")
+    @PutMapping(value = "/updateInventory/{iCode}")
     public InventoryDTO updateInventory(
             @PathVariable("iCode")String iCode,
             @RequestParam("iDesc")String iDesc,
