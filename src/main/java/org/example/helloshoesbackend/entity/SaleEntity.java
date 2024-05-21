@@ -23,6 +23,6 @@ public class SaleEntity {
     @ManyToOne
     private CustomerEntity customerEntity;
 
-    @ManyToMany
+    @ManyToMany(mappedBy = "iSaleEntity" , fetch = FetchType.LAZY)
     private List<InventoryEntity> sInventoryEntity;
 }
