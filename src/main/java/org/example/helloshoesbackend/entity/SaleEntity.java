@@ -1,10 +1,9 @@
 package org.example.helloshoesbackend.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.*;
+
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -23,4 +22,7 @@ public class SaleEntity {
 
     @ManyToOne
     private CustomerEntity customerEntity;
+
+    @ManyToMany
+    private List<InventoryEntity> sInventoryEntity;
 }
