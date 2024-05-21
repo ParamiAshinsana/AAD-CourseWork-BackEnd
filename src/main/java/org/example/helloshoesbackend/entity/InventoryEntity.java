@@ -30,7 +30,7 @@ public class InventoryEntity {
     @ManyToOne
     private SupplierEntity supplierEntity;
 
-    @ManyToMany(mappedBy = "sInventoryEntity" , fetch = FetchType.LAZY)
+    @ManyToMany
     private List<SaleEntity> iSaleEntity;
 
 }
