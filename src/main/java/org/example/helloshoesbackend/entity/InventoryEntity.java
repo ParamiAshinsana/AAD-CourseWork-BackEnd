@@ -3,6 +3,8 @@ package org.example.helloshoesbackend.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
@@ -27,5 +29,8 @@ public class InventoryEntity {
 
     @ManyToOne
     private SupplierEntity supplierEntity;
+
+    @ManyToMany(mappedBy = "sInventoryEntity" , fetch = FetchType.LAZY)
+    private List<SaleEntity> iSaleEntity;
 
 }
