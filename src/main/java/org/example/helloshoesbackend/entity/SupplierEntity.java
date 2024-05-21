@@ -28,7 +28,6 @@ public class SupplierEntity {
     private String contactNo02;
     private String supplierEmail;
 
-
     @OneToMany(mappedBy = "supplierEntity" , fetch = FetchType.LAZY)
     @JsonIgnore
     private List<InventoryEntity> inventoryEntities ;
