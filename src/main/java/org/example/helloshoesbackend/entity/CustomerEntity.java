@@ -1,5 +1,6 @@
 package org.example.helloshoesbackend.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -33,5 +34,6 @@ public class CustomerEntity {
     private String customerEmail;
 
     @OneToMany(mappedBy = "customerEntity", fetch = FetchType.LAZY)
+    @JsonIgnore
     private List<SaleEntity> saleEntities ;
 }
