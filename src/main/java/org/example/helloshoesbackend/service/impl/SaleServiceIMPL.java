@@ -5,24 +5,107 @@ import lombok.RequiredArgsConstructor;
 import org.example.helloshoesbackend.dto.SaleDTO;
 import org.example.helloshoesbackend.entity.CustomerEntity;
 import org.example.helloshoesbackend.entity.SaleEntity;
+import org.example.helloshoesbackend.exception.NotFoundException;
+import org.example.helloshoesbackend.repository.CustomerDAO;
+import org.example.helloshoesbackend.repository.InventoryDAO;
 import org.example.helloshoesbackend.repository.SaleDAO;
 import org.example.helloshoesbackend.service.SaleService;
 import org.example.helloshoesbackend.utill.SaleMapping;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @Transactional
 @RequiredArgsConstructor
 public class SaleServiceIMPL implements SaleService {
 
+//    private final SaleDAO saleDAO;
+//    private final SaleMapping saleMapping;
+//
+//    @Override
+//    public SaleDTO saveSale(SaleDTO saleDTO) {
+//        SaleEntity saleEntity = saleMapping.toSale(saleDTO);
+//
+//        saleEntity = saleDAO.save(saleEntity);
+//        return saleMapping.toSaleDTO(saleEntity);
+//    }
+
     private final SaleDAO saleDAO;
     private final SaleMapping saleMapping;
+    private final CustomerDAO customerDAO;
+    private final InventoryDAO inventoryDAO;
 
     @Override
     public SaleDTO saveSale(SaleDTO saleDTO) {
-        SaleEntity saleEntity = saleMapping.toSale(saleDTO);
-
-        saleEntity = saleDAO.save(saleEntity);
-        return saleMapping.toSaleDTO(saleEntity);
+//        // Convert SaleDTO to SaleEntity
+//        SaleEntity saleEntity = saleMapping.toSale(saleDTO);
+//
+//        // Find the associated CustomerEntity and set it to SaleEntity
+//        Optional<CustomerEntity> customerEntityOptional = customerDAO.findById(saleDTO.get());
+//        if (customerEntityOptional.isPresent()) {
+//            saleEntity.setCustomerEntity(customerEntityOptional.get());
+//        } else {
+//            throw new NotFoundException("Customer not found");
+//        }
+//
+//        // Set the InventoryEntities to SaleEntity
+//        saleEntity.setSInventoryEntity(
+//                saleDTO.getInventoryCodes().stream()
+//                        .map(code -> inventoryDAO.findById(code).orElseThrow(() -> new NotFoundException("Inventory item not found")))
+//                        .collect(Collectors.toList())
+//        );
+//
+//        // Save the SaleEntity
+//        saleEntity = saleDAO.save(saleEntity);
+//
+//        // Convert the saved SaleEntity back to SaleDTO
+//        return saleMapping.toSaleDTO(saleEntity);
+        return saleDTO;
     }
+
+
+//    public boolean placeOrder(PlaceOrderRequestDTO placeOrderRequestDTO) throws NotFoundException {
+//        Sale sale = new Sale();
+//        sale.setOrder_id(UUID.randomUUID().toString());
+//        sale.setCustomer_name(placeOrderRequestDTO.getCustomer_name());
+//        sale.setTotal_price(placeOrderRequestDTO.getNet_total());
+//        sale.setPurchase_date(new Date());
+//        sale.setPayment_method(placeOrderRequestDTO.getPayment_type());
+//
+//        Sale savedSale = saleRepository.save(sale);
+//
+//        List<SaleInventoryDetail> saleInventoryDetails = new ArrayList<>();
+//        for (OrderItemDTO item : placeOrderRequestDTO.getItems()) {
+//            Inventory inventory = inventoryDAO.findById(item.getItem_id()).orElseThrow(() -> new NotFoundException("Item not found"));
+//
+//            SaleInventoryDetail saleInventoryDetail = new SaleInventoryDetail();
+//            saleInventoryDetail.setOrderDetailID(UUID.randomUUID().toString());
+//            saleInventoryDetail.setInventory(inventory);
+//            saleInventoryDetail.setSale(savedSale);
+//            saleInventoryDetail.setItemName(item.getItem_name());
+//            saleInventoryDetail.setQuantity(item.getQuantity());
+//            saleInventoryDetail.setSize(item.getItem_size());
+//            saleInventoryDetail.setUnitPrice(item.getUnit_price());
+//            saleInventoryDetail.setSubTotal(item.getTotal_price());
+//
+//            saleInventoryDetails.add(saleInventoryDetail);
+//        }
+//        saleInventoryDetailRepository.saveAll(saleInventoryDetails);
+//
+//        SaleDTO saleDTO = new SaleDTO();
+//        saleDTO.setOrder_id(savedSale.getOrder_id());
+//        saleDTO.setCustomer_name(savedSale.getCustomer_name());
+//        saleDTO.setTotal_price(savedSale.getTotal_price());
+//        saleDTO.setPurchase_date(savedSale.getPurchase_date());
+//        saleDTO.setPayment_method(savedSale.getPayment_method());
+//        saleDTO.setAdded_points(0);
+//        saleDTO.setCashier_name("Default Cashier");
+//
+//        if (saleDTO != null) {
+//            return true;
+//        }
+//        return false;
+//    }
 }
