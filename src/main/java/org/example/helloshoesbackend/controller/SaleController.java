@@ -18,8 +18,13 @@ public class SaleController {
     SaleDTO salesDTO = new SaleDTO();
 
     @PostMapping(value = "/saveSale")
-    public SaleDTO saveSales(@RequestBody SaleDTO saleDTO){
+    public SaleDTO saveSales(@RequestBody SaleDTO saleDTO) {
+        return saleService.saveSale(saleDTO);
+    }
 
+//    @PostMapping(value = "/saveSale")
+//    public SaleDTO saveSales(@RequestBody SaleDTO saleDTO){
+//
 //        CustomerDTO customerDTO = new CustomerDTO();
 //        customerDTO.setCustomerCode(String.valueOf(customerDTO));
 //        salesDTO.setCusDTO(customerDTO);
@@ -29,6 +34,20 @@ public class SaleController {
 //        salesDTO.setInvDTO(inventoryDTO);
 //
 //        return saleService.saveSale(saleDTO);
-    }
+//    }
+
+
+//    @PostMapping(value = "/saveSale")
+//    public SaleDTO saveSales(@RequestBody SaleDTO saleDTO, @RequestParam String cusID, @RequestParam String invId) {
+//        CustomerDTO customerDTO = new CustomerDTO();
+//        customerDTO.setCustomerCode(cusID);
+//        saleDTO.setCusDTO(customerDTO);
+//
+//        InventoryDTO inventoryDTO = new InventoryDTO();
+//        inventoryDTO.setItemCode(invId);
+//        saleDTO.setInvDTO(inventoryDTO);
+//
+//        return saleService.saveSale(saleDTO);
+//    }
 }
 
