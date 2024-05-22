@@ -1,8 +1,10 @@
 package org.example.helloshoesbackend.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @AllArgsConstructor
@@ -16,6 +18,7 @@ public class SaleEntity {
     private String orderNo;
     private String orderItemQty;
     private double totalPrice;
+    private LocalDate purchaseDate;
     private String paymentMethod;
     private double addedPoints;
     private String cashierName;
@@ -23,6 +26,6 @@ public class SaleEntity {
     @ManyToOne
     private CustomerEntity customerEntity;
 
-    @ManyToMany(mappedBy = "iSaleEntity" , fetch = FetchType.LAZY)
-    private List<InventoryEntity> sInventoryEntity;
+    @ManyToOne
+    private InventoryEntity inventoryEntities ;
 }
