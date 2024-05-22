@@ -1,6 +1,8 @@
 package org.example.helloshoesbackend.dto;
 
 import lombok.*;
+
+import java.time.LocalDate;
 import java.util.List;
 
 @AllArgsConstructor
@@ -9,10 +11,11 @@ import java.util.List;
 @Setter
 public class SaleDTO {
     private String orderNo;
-    private CustomerDTO customerEntity;
-    private List<InventoryDTO> sInventoryEntity;
+    private CustomerDTO cusDTO;
+    private InventoryDTO invDTO;
     private String orderItemQty;
     private double totalPrice;
+    private LocalDate purchaseDate;
     private String paymentMethod;
     private double addedPoints;
     private String cashierName;
