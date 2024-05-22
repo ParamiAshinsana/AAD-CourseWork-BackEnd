@@ -1,5 +1,6 @@
 package org.example.helloshoesbackend.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -30,7 +31,10 @@ public class InventoryEntity {
     @ManyToOne
     private SupplierEntity supplierEntity;
 
-    @ManyToMany
-    private List<SaleEntity> iSaleEntity;
+//    @ManyToMany(mappedBy = "sInventoryEntity" , fetch = FetchType.LAZY)
+//    private List<SaleEntity> iSaleEntity;
+
+    @OneToMany(mappedBy = "inventoryEntities" , fetch = FetchType.LAZY)
+    private List<SaleEntity> saleEntity;
 
 }
