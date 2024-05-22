@@ -20,15 +20,15 @@ public class SaleController {
     @PostMapping(value = "/saveSale")
     public SaleDTO saveSales(@RequestBody SaleDTO saleDTO){
 
-        CustomerDTO customerDTO = new CustomerDTO();
-        customerDTO.setCustomerCode(String.valueOf(customerDTO));
-        salesDTO.setCusDTO(customerDTO);
-
-        InventoryDTO inventoryDTO = new InventoryDTO();
-        inventoryDTO.setItemCode(String.valueOf(inventoryDTO));
-        salesDTO.setInvDTO(inventoryDTO);
-
-        return saleService.saveSale(saleDTO);
+//        CustomerDTO customerDTO = new CustomerDTO();
+//        customerDTO.setCustomerCode(String.valueOf(customerDTO));
+//        salesDTO.setCusDTO(customerDTO);
+//
+//        InventoryDTO inventoryDTO = new InventoryDTO();
+//        inventoryDTO.setItemCode(String.valueOf(inventoryDTO));
+//        salesDTO.setInvDTO(inventoryDTO);
+//
+//        return saleService.saveSale(saleDTO);
     }
 }
 
