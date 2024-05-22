@@ -22,4 +22,6 @@ public interface InventoryDAO extends JpaRepository<InventoryEntity, String> {
 
     @Query(value = "SELECT itemSize FROM Inventory WHERE itemCode = ?1", nativeQuery = true)
     String findShoeSizeById(String id);
+
+    InventoryEntity findByItemCode(String itemCode);
 }
