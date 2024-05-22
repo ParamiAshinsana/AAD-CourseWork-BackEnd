@@ -14,4 +14,6 @@ public interface CustomerDAO extends JpaRepository<CustomerEntity, String> {
 
     @Query(value = "SELECT customerName FROM Customer WHERE customerCode = ?1", nativeQuery = true)
     String findCustomerNameById(String id);
+
+    CustomerEntity findByCustomerCode(String customerCode);
 }
