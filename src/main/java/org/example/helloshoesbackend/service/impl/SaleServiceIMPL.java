@@ -5,21 +5,29 @@ import lombok.RequiredArgsConstructor;
 import org.example.helloshoesbackend.dto.SaleDTO;
 import org.example.helloshoesbackend.entity.CustomerEntity;
 import org.example.helloshoesbackend.entity.SaleEntity;
-import org.example.helloshoesbackend.exception.NotFoundException;
-import org.example.helloshoesbackend.repository.CustomerDAO;
-import org.example.helloshoesbackend.repository.InventoryDAO;
 import org.example.helloshoesbackend.repository.SaleDAO;
 import org.example.helloshoesbackend.service.SaleService;
 import org.example.helloshoesbackend.utill.SaleMapping;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 @Transactional
 @RequiredArgsConstructor
 public class SaleServiceIMPL implements SaleService {
+
+    private final SaleDAO saleDAO;
+    private final SaleMapping saleMapping;
+
+    @Override
+    public SaleDTO saveSale(SaleDTO saleDTO) {
+        SaleEntity saleEntity = saleMapping.toSale(saleDTO);
+
+        saleEntity = saleDAO.save(saleEntity);
+        return saleMapping.toSaleDTO(saleEntity);
+    }
+
+
 
 //    private final SaleDAO saleDAO;
 //    private final SaleMapping saleMapping;
@@ -31,14 +39,14 @@ public class SaleServiceIMPL implements SaleService {
 //        saleEntity = saleDAO.save(saleEntity);
 //        return saleMapping.toSaleDTO(saleEntity);
 //    }
+//
+//    private final SaleDAO saleDAO;
+//    private final SaleMapping saleMapping;
+//    private final CustomerDAO customerDAO;
+//    private final InventoryDAO inventoryDAO;
 
-    private final SaleDAO saleDAO;
-    private final SaleMapping saleMapping;
-    private final CustomerDAO customerDAO;
-    private final InventoryDAO inventoryDAO;
-
-    @Override
-    public SaleDTO saveSale(SaleDTO saleDTO) {
+//    @Override
+//    public SaleDTO saveSale(SaleDTO saleDTO) {
 //        // Convert SaleDTO to SaleEntity
 //        SaleEntity saleEntity = saleMapping.toSale(saleDTO);
 //
@@ -62,8 +70,8 @@ public class SaleServiceIMPL implements SaleService {
 //
 //        // Convert the saved SaleEntity back to SaleDTO
 //        return saleMapping.toSaleDTO(saleEntity);
-        return saleDTO;
-    }
+//        return saleDTO;
+//    }
 
 
 //    public boolean placeOrder(PlaceOrderRequestDTO placeOrderRequestDTO) throws NotFoundException {
