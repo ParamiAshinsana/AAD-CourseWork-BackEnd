@@ -35,6 +35,7 @@ public class InventoryEntity {
 //    private List<SaleEntity> iSaleEntity;
 
     @OneToMany(mappedBy = "inventoryEntities" , fetch = FetchType.LAZY)
+    @JsonIgnore
     private List<SaleEntity> saleEntity;
 
 }
