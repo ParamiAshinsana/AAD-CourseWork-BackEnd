@@ -19,39 +19,10 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class SaleServiceIMPL implements SaleService {
 
-//    private final SaleDAO saleDAO;
-//    private final SaleMapping saleMapping;
-//
-//    @Override
-//    public SaleDTO saveSale(SaleDTO saleDTO) {
-//        SaleEntity saleEntity = saleMapping.toSale(saleDTO);
-//
-//        saleEntity = saleDAO.save(saleEntity);
-//        return saleMapping.toSaleDTO(saleEntity);
-//    }
-
     private final SaleDAO saleDAO;
     private final SaleMapping saleMapping;
     private final CustomerDAO customerDAO;
     private final InventoryDAO inventoryDAO;
-
-//    @Override
-//    public SaleDTO saveSale(SaleDTO saleDTO) {
-//        SaleEntity saleEntity = saleMapping.toSale(saleDTO);
-//
-//        // Extract customer code and find CustomerEntity
-//        String customerCode = saleDTO.getCusDTO().getCustomerCode();
-//        CustomerEntity customerEntity = customerDAO.findByCustomerCode(customerCode);
-//        saleEntity.setCustomerEntity(customerEntity);
-//
-//        // Extract item code and find InventoryEntity
-//        String itemCode = saleDTO.getInvDTO().getItemCode();
-//        InventoryEntity inventoryEntity = inventoryDAO.findByItemCode(itemCode);
-//        saleEntity.setInventoryEntities(inventoryEntity);
-//
-//        saleEntity = saleDAO.save(saleEntity);
-//        return saleMapping.toSaleDTO(saleEntity);
-//    }
 
     @Override
     public SaleDTO saveSale(SaleDTO saleDTO) {
