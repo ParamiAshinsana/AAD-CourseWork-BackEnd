@@ -2,7 +2,9 @@ package org.example.helloshoesbackend.repository;
 
 import org.example.helloshoesbackend.entity.InventoryEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -24,4 +26,9 @@ public interface InventoryDAO extends JpaRepository<InventoryEntity, String> {
     String findShoeSizeById(String id);
 
     InventoryEntity findByItemCode(String itemCode);
+
+
+    @Modifying
+    @Query("UPDATE InventoryEntity i SET i.itemQty = i.itemQty - :orderItemQty WHERE i.itemCode = :itemCode AND i.itemQty >= :orderItemQty")
+    int decrementItemQty(@Param("itemCode") String itemCode, @Param("orderItemQty") int orderItemQty);
 }
