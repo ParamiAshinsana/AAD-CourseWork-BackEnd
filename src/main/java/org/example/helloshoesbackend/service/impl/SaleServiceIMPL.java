@@ -24,8 +24,47 @@ public class SaleServiceIMPL implements SaleService {
     private final CustomerDAO customerDAO;
     private final InventoryDAO inventoryDAO;
 
+//    @Override
+//    public SaleDTO saveSale(SaleDTO saleDTO) {
+//        SaleEntity saleEntity = saleMapping.toSale(saleDTO);
+//
+//        // Extract customer code and find CustomerEntity
+//        String customerCode = saleDTO.getCusDTO().getCustomerCode();
+//        CustomerEntity customerEntity = customerDAO.findByCustomerCode(customerCode);
+//        saleEntity.setCustomerEntity(customerEntity);
+//
+//        // Extract item code and parse order item quantity
+//        String itemCode = saleDTO.getInvDTO().getItemCode();
+//        int orderItemQty = Integer.parseInt(saleDTO.getOrderItemQty());
+//
+//        // Use custom query to decrement item quantity
+//        int updatedRows = inventoryDAO.decrementItemQty(itemCode, orderItemQty);
+//        if (updatedRows == 0) {
+//            throw new IllegalArgumentException("Insufficient inventory for item code: " + itemCode);
+//        }
+//
+//        // Find the updated InventoryEntity
+//        InventoryEntity inventoryEntity = inventoryDAO.findByItemCode(itemCode);
+//        saleEntity.setInventoryEntities(inventoryEntity);
+//
+//        // Save the sale entity
+//        saleEntity = saleDAO.save(saleEntity);
+//
+//        return saleMapping.toSaleDTO(saleEntity);
+//    }
+
+
     @Override
     public SaleDTO saveSale(SaleDTO saleDTO) {
+        // Ensure cusDTO and invDTO are not null
+        if (saleDTO.getCusDTO() == null || saleDTO.getCusDTO().getCustomerCode() == null) {
+            throw new IllegalArgumentException("Customer code is required.");
+        }
+        if (saleDTO.getInvDTO() == null || saleDTO.getInvDTO().getItemCode() == null) {
+            throw new IllegalArgumentException("Item code is required.");
+        }
+
+        // Map SaleDTO to SaleEntity
         SaleEntity saleEntity = saleMapping.toSale(saleDTO);
 
         // Extract customer code and find CustomerEntity
@@ -50,6 +89,7 @@ public class SaleServiceIMPL implements SaleService {
         // Save the sale entity
         saleEntity = saleDAO.save(saleEntity);
 
+        // Map SaleEntity back to SaleDTO and return
         return saleMapping.toSaleDTO(saleEntity);
     }
 
