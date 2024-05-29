@@ -13,6 +13,8 @@ import org.example.helloshoesbackend.service.SaleService;
 import org.example.helloshoesbackend.utill.SaleMapping;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 
 @Service
 @Transactional
@@ -93,123 +95,10 @@ public class SaleServiceIMPL implements SaleService {
         return saleMapping.toSaleDTO(saleEntity);
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    @Override
+    public List<SaleDTO> getAllSales() {
+        return null;
+    }
 
 
 //    private final SaleDAO saleDAO;
