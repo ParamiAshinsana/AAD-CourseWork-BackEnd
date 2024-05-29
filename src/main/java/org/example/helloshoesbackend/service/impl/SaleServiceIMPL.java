@@ -100,6 +100,11 @@ public class SaleServiceIMPL implements SaleService {
         return saleMapping.toSaleDTOList(saleDAO.findAll());
     }
 
+    @Override
+    public void deleteSales(String id) {
+
+    }
+
 
 //    private final SaleDAO saleDAO;
 //    private final SaleMapping saleMapping;
