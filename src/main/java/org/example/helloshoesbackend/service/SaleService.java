@@ -8,4 +8,6 @@ public interface SaleService {
     SaleDTO saveSale(SaleDTO saleDTO);
 
     List<SaleDTO> getAllSales();
+
+    void deleteSales(String id);
 }
