@@ -6,6 +6,7 @@ import org.example.helloshoesbackend.dto.SaleDTO;
 import org.example.helloshoesbackend.entity.CustomerEntity;
 import org.example.helloshoesbackend.entity.InventoryEntity;
 import org.example.helloshoesbackend.entity.SaleEntity;
+import org.example.helloshoesbackend.exception.NotFoundException;
 import org.example.helloshoesbackend.repository.CustomerDAO;
 import org.example.helloshoesbackend.repository.InventoryDAO;
 import org.example.helloshoesbackend.repository.SaleDAO;
@@ -102,7 +103,8 @@ public class SaleServiceIMPL implements SaleService {
 
     @Override
     public void deleteSales(String id) {
-
+        if(!saleDAO.existsById(id)) throw new NotFoundException("Sale Item not found");
+        saleDAO.deleteById(id);
     }
 
 
