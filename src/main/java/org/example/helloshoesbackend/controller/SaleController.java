@@ -26,5 +26,10 @@ public class SaleController {
         return saleService.getAllSales();
     }
 
+    @DeleteMapping("/deleteSales/{id}")
+    public void deleteSale(@PathVariable ("id") String id){
+        saleService.deleteSales(id);
+    }
+
 }
 
