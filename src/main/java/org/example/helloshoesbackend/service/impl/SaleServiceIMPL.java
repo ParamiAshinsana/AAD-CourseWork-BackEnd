@@ -97,7 +97,7 @@ public class SaleServiceIMPL implements SaleService {
 
     @Override
     public List<SaleDTO> getAllSales() {
-        return null;
+        return saleMapping.toSaleDTOList(saleDAO.findAll());
     }
 
 
