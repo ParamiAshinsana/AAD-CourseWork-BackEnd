@@ -33,6 +33,14 @@ public class CustomerController {
         customerService.deleteCustomer(id);
     }
 
+//    @GetMapping(value = "/getAllCustomer")
+//    public CustomerDTO getAllCustomers(){
+//        CustomerDTO customerDTO = new CustomerDTO();
+//        customerDTO.setCustomerName("Asd");
+//        customerDTO.setCustomerAddress("dfg");
+//        return customerDTO;
+//    }
+
     @GetMapping(value = "/getAllCustomer")
     List<CustomerDTO> getAllCustomers(){
         return customerService.getAllCustomer();
