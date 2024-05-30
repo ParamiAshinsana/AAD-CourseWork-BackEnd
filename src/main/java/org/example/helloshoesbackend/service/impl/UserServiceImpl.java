@@ -1,6 +1,7 @@
 package org.example.helloshoesbackend.service.impl;
 
 import org.example.helloshoesbackend.dto.UserDTO;
+import org.example.helloshoesbackend.entity.User;
 import org.example.helloshoesbackend.repository.UserRepository;
 import org.example.helloshoesbackend.service.UserService;
 import org.modelmapper.ModelMapper;
