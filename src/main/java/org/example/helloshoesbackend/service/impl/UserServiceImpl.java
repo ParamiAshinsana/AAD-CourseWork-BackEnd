@@ -20,18 +20,6 @@ public class UserServiceImpl implements UserDetailsService, UserService {
 
     @Autowired
     private ModelMapper modelMapper;
-    @Override
-    public int saveUser(UserDTO userDTO) {
-        return 0;
-    }
 
-    @Override
-    public UserDTO searchUser(String username) {
-        return null;
-    }
 
-    @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return null;
-    }
 }
