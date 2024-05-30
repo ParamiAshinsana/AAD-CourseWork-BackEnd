@@ -8,6 +8,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import org.example.helloshoesbackend.service.impl.UserServiceImpl;
 import org.example.helloshoesbackend.util.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -24,6 +25,9 @@ public class JwtFilter extends OncePerRequestFilter {
     private JwtUtil jwtUtil;
     @Autowired
     private UserServiceImpl userService;
+    @Value("${jwt.secret}")
+    private String secretKey;
+
     @Override
     protected void doFilterInternal(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, FilterChain filterChain) throws ServletException, IOException {
         String authorization = httpServletRequest.getHeader("Authorization");
