@@ -1,6 +1,7 @@
 package org.example.helloshoesbackend.config;
 
 import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jwts;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -62,5 +63,9 @@ public class JwtFilter extends OncePerRequestFilter {
 
         }
         filterChain.doFilter(httpServletRequest, httpServletResponse);
+    }
+
+    private Claims getClaimsFromJwtToken(String token) {
+        return Jwts.parser().setSigningKey(secretKey.getBytes()).parseClaimsJws(token).getBody();
     }
 }
