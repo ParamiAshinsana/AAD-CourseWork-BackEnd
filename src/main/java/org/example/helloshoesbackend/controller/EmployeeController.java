@@ -7,6 +7,7 @@ import org.example.helloshoesbackend.dto.InventoryDTO;
 import org.example.helloshoesbackend.entity.Gender;
 import org.example.helloshoesbackend.service.EmployeeService;
 import org.example.helloshoesbackend.utilMatters.UtilMatters;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import java.time.LocalDate;
@@ -21,6 +22,7 @@ public class EmployeeController {
     EmployeeDTO employeeDTO = new EmployeeDTO();
 
     @PostMapping(value = "/saveEmployee")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public EmployeeDTO saveEmployees(
             @RequestParam("empCode")String empCode,
             @RequestParam("empName")String empName,
@@ -105,6 +107,7 @@ public class EmployeeController {
 //    }
 
     @PutMapping(value = "/updateEmployee/{empCode}")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public EmployeeDTO updateEmployee(
             @PathVariable("empCode") String empCode,
             @RequestParam("empName") String empName,
@@ -148,11 +151,13 @@ public class EmployeeController {
     }
 
     @GetMapping(value = "/getAllEmployee")
+    @PreAuthorize("hasAuthority('USER') or hasAuthority('ADMIN')")
     List<EmployeeDTO> getAllEmployees(){
         return employeeService.getAllEmployee();
     }
 
     @DeleteMapping("/deleteEmployee/{id}")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public void deleteEmployee(@PathVariable ("id") String id){
         employeeService.deleteEmployee(id);
     }
