@@ -16,7 +16,7 @@ import java.util.List;
 public class SaleEntity {
     @Id
     private String orderNo;
-    private String orderItemQty;
+    private int orderItemQty;
     private double totalPrice;
     private LocalDate purchaseDate;
     private String paymentMethod;
