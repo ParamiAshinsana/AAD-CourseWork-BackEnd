@@ -21,8 +21,7 @@ public class InventoryEntity {
     private String category;
     private int itemSize;
     private int itemQty;
-//    private String supplierCode;
-//    private String supplierName;
+
     private double unitPriceSale;
     private double unitPriceBuy;
     private double expectedProfit;
@@ -30,9 +29,6 @@ public class InventoryEntity {
 
     @ManyToOne
     private SupplierEntity supplierEntity;
-
-//    @ManyToMany(mappedBy = "sInventoryEntity" , fetch = FetchType.LAZY)
-//    private List<SaleEntity> iSaleEntity;
 
     @OneToMany(mappedBy = "inventoryEntities" , fetch = FetchType.LAZY)
     @JsonIgnore
