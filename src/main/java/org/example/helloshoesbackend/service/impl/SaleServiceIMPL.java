@@ -2,6 +2,8 @@ package org.example.helloshoesbackend.service.impl;
 
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import org.example.helloshoesbackend.dto.InventoryDTO;
+import org.example.helloshoesbackend.dto.ItemDetailsDTO;
 import org.example.helloshoesbackend.dto.SaleDTO;
 import org.example.helloshoesbackend.entity.CustomerEntity;
 import org.example.helloshoesbackend.entity.InventoryEntity;
@@ -14,6 +16,7 @@ import org.example.helloshoesbackend.service.SaleService;
 import org.example.helloshoesbackend.utill.SaleMapping;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 
@@ -27,34 +30,7 @@ public class SaleServiceIMPL implements SaleService {
     private final CustomerDAO customerDAO;
     private final InventoryDAO inventoryDAO;
 
-//    @Override
-//    public SaleDTO saveSale(SaleDTO saleDTO) {
-//        SaleEntity saleEntity = saleMapping.toSale(saleDTO);
-//
-//        // Extract customer code and find CustomerEntity
-//        String customerCode = saleDTO.getCusDTO().getCustomerCode();
-//        CustomerEntity customerEntity = customerDAO.findByCustomerCode(customerCode);
-//        saleEntity.setCustomerEntity(customerEntity);
-//
-//        // Extract item code and parse order item quantity
-//        String itemCode = saleDTO.getInvDTO().getItemCode();
-//        int orderItemQty = Integer.parseInt(saleDTO.getOrderItemQty());
-//
-//        // Use custom query to decrement item quantity
-//        int updatedRows = inventoryDAO.decrementItemQty(itemCode, orderItemQty);
-//        if (updatedRows == 0) {
-//            throw new IllegalArgumentException("Insufficient inventory for item code: " + itemCode);
-//        }
-//
-//        // Find the updated InventoryEntity
-//        InventoryEntity inventoryEntity = inventoryDAO.findByItemCode(itemCode);
-//        saleEntity.setInventoryEntities(inventoryEntity);
-//
-//        // Save the sale entity
-//        saleEntity = saleDAO.save(saleEntity);
-//
-//        return saleMapping.toSaleDTO(saleEntity);
-//    }
+
 
 
     @Override
@@ -77,7 +53,8 @@ public class SaleServiceIMPL implements SaleService {
 
         // Extract item code and parse order item quantity
         String itemCode = saleDTO.getInvDTO().getItemCode();
-        int orderItemQty = Integer.parseInt(saleDTO.getOrderItemQty());
+        int orderItemQty = saleDTO.getOrderItemQty();
+//        int orderItemQty = Integer.parseInt(saleDTO.getOrderItemQty());
 
         // Use custom query to decrement item quantity
         int updatedRows = inventoryDAO.decrementItemQty(itemCode, orderItemQty);
@@ -106,6 +83,33 @@ public class SaleServiceIMPL implements SaleService {
         if(!saleDAO.existsById(id)) throw new NotFoundException("Sale Item not found");
         saleDAO.deleteById(id);
     }
+
+    @Override
+    public ItemDetailsDTO getBestSellingInventory(String date) {
+        LocalDate localDate = LocalDate.parse(date);
+        List<Object[]> result = saleDAO.findBestSellingInventory(localDate);
+
+        if (result.isEmpty()) {
+//            throw new NotFoundException("No sales found for the given date: " + date);
+            return null;
+        }
+
+        Object[] bestSelling = result.get(0);
+        String itemCode = (String) bestSelling[0];
+        String description = (String) bestSelling[1];
+
+        return new ItemDetailsDTO(itemCode, description);
+    }
+
+//    @Override
+//    public Double getTotalSaleItem(String date) {
+//        return null;
+//    }
+//
+//    @Override
+//    public Double getTotalProfit(String date) {
+//        return null;
+//    }
 
 
 //    private final SaleDAO saleDAO;
