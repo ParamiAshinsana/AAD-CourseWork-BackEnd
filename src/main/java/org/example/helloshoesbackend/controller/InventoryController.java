@@ -5,6 +5,7 @@ import org.example.helloshoesbackend.dto.InventoryDTO;
 import org.example.helloshoesbackend.dto.SupplierDTO;
 import org.example.helloshoesbackend.service.InventoryService;
 import org.example.helloshoesbackend.utilMatters.UtilMatters;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -20,6 +21,7 @@ public class InventoryController {
     InventoryDTO inventoryDTO = new InventoryDTO();
 
     @PostMapping(value = "/saveInventory")
+    @PreAuthorize("hasAuthority('USER') or hasAuthority('ADMIN')")
     public InventoryDTO saveInventories(
             @RequestParam("iCode")String iCode,
             @RequestParam("iDesc")String iDesc,
@@ -57,6 +59,7 @@ public class InventoryController {
     }
 
     @PutMapping(value = "/updateInventory/{iCode}")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public InventoryDTO updateInventory(
             @PathVariable("iCode")String iCode,
             @RequestParam("iDesc")String iDesc,
@@ -93,6 +96,7 @@ public class InventoryController {
     }
 
     @GetMapping(value = "/getAllInventory")
+    @PreAuthorize("hasAuthority('USER') or hasAuthority('ADMIN')")
     List<InventoryDTO> getAllInventories(){
         System.out.println("get Controller");
         System.out.println(inventoryDTO);
@@ -100,6 +104,7 @@ public class InventoryController {
     }
 
     @DeleteMapping("/deleteInventory/{id}")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public void deleteInventory(@PathVariable ("id") String id){
         inventoryService.deleteInventory(id);
     }
@@ -107,11 +112,13 @@ public class InventoryController {
 
     // To Sale Service Controller
     @GetMapping(value = "/getAllItemCodes")
+    @PreAuthorize("hasAuthority('USER') or hasAuthority('ADMIN')")
     List<String> getAllItemCode(){
         return inventoryService.getAllItemCodes();
     }
 
     @GetMapping(value = "/getInventoryDescription/{id}")
+    @PreAuthorize("hasAuthority('USER') or hasAuthority('ADMIN')")
     public List<InventoryDTO> getInventoryDescriptions(@PathVariable("id")String id ){
         return inventoryService.getInventoryDescription(id);
     }
