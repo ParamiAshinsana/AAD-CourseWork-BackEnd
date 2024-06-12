@@ -15,7 +15,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service
 @Transactional
@@ -64,6 +66,41 @@ public class UserServiceImpl implements UserDetailsService, UserService {
             userRepository.save(modelMapper.map(userDTO, User.class));
             return 1;
         }
+    }
+
+    // get users
+//    @Override
+//    public List<UserDTO> getAllUsers() {
+//        List<User> userEntities = userRepository.findAll();
+//        // Convert UserEntity objects to UserDTO objects
+//        return userEntities.stream()
+//                .map(userEntity -> {
+//                    UserDTO userDTO = new UserDTO();
+//                    // Map properties from userEntity to userDTO
+//                    // Example: userDTO.setId(userEntity.getId());
+//                    return userDTO;
+//                })
+//                .collect(Collectors.toList());
+
+//    }
+
+
+
+    @Override
+    public List<UserDTO> getAllUsers() {
+        List<User> userEntities = userRepository.findAll();
+        return userEntities.stream()
+                .map(this::mapToDTO)
+                .collect(Collectors.toList());
+    }
+
+    // Helper method to map UserEntity to UserDTO
+    private UserDTO mapToDTO(User userEntity) {
+        UserDTO userDTO = new UserDTO();
+        userDTO.setEmail(userEntity.getEmail());
+        userDTO.setName(userEntity.getName());
+        userDTO.setRole(userEntity.getRole());
+        return userDTO;
     }
 
 }
