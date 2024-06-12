@@ -7,7 +7,11 @@ import org.example.helloshoesbackend.service.UserService;
 import org.example.helloshoesbackend.util.JwtUtil;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @CrossOrigin
 @RestController
@@ -49,4 +53,18 @@ public class UserController {
                     .body(new ResponseDTO(500, e.getMessage(), null));
         }
     }
+
+    @GetMapping("/getUsers")
+    @PreAuthorize("hasAuthority('ADMIN')")
+    public ResponseEntity<List<UserDTO>> getAllUsers() {
+        try {
+            List<UserDTO> users = userService.getAllUsers();
+            return ResponseEntity.ok(users);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(new ArrayList<>()); // Return an empty list or handle the exception as needed
+        }
+    }
+
+
 }
