@@ -25,11 +25,7 @@ public class CustomerEntity {
     @Enumerated(EnumType.STRING)
     private Level loyaltyLevel;
     private String customerAddress;
-//    private String customerAddress01;
-//    private String customerAddress02;
-//    private String customerAddress03;
-//    private String customerAddress04;
-//    private String customerAddress05;
+
     private String customerContact;
     private String customerEmail;
 
